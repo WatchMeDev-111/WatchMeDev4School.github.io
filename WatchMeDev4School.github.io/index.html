@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Squig Run</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Press Start 2P', cursive;
+      overflow: hidden;
+      color: white;
+    }
+
+    #gameContainer {
+      position: relative;
+    }
+
+    canvas {
+      border: 3px solid red;
+      background-color: #000;
+      display: block;
+    }
+
+    #title-screen,
+    #death-screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 10;
+    }
+
+    #title-screen h1,
+    .death-box h2 {
+      color: white;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px red;
+    }
+
+    #startBtn,
+    #retryBtn {
+      font-size: 16px;
+      padding: 12px 24px;
+      background-color: black;
+      color: white;
+      border: 2px solid red;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+
+    .death-box {
+      background: #111;
+      padding: 40px;
+      border: 3px solid red;
+      box-shadow: 0 0 20px red;
+      text-align: center;
+      color: white;
+    }
+
+    #distance-display {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: white;
+      font-size: 12px;
+      font-family: 'Press Start 2P', monospace;
+      text-shadow: 1px 1px red;
+      z-index: 5;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="gameContainer">
+    <div id="distance-display">Distance: 0m</div>
+    <canvas id="gameCanvas" width="800" height="450"></canvas>
+
+    <!-- Title screen -->
+    <div id="title-screen">
+      <h1>SQUIG RUN</h1>
+      <button id="startBtn">START DA RUN</button>
+    </div>
+
+    <!-- Death/retry screen -->
+    <div id="death-screen" style="display: none;">
+      <div class="death-box">
+        <h2>DA SQUIG DED 💀</h2>
+        <button id="retryBtn">RUN IT BACK</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+
+</html>
