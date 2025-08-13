@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>WatchMe.Dev Games</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- soft overlay for readability over bg -->
+  <div class="backdrop"></div>
+
+  <main class="container">
+    <!-- Header / Profile -->
+    <section class="profile">
+      <div class="avatar" aria-hidden="true"></div>
+      <div>
+        <div class="headline">
+          <h1 class="title">WatchMe.Dev <strong>GAMES</strong></h1>
+          <!--<span class="badge">Level 30 • 700 XP</span> -->
+        </div>
+        <p class="meta">Retro browser games you can play in a coffee break. New builds whenever the dev behaves.</p>
+      </div>
+    </section>
+
+    <!-- Showcase strip -->
+    <section class="showcase">
+      <div class="show-card">Games</div>
+      <div class="show-card">Insert Catagory Here:</div>
+      <div class="show-card">Insert Catagory Here:</div>
+      <div class="show-card">Insert Catagory Here:</div>
+    </section>
+
+    <!-- Library / Game grid -->
+    <section class="panel">
+      <h2 class="section-title">Library</h2>
+
+      <div class="grid">
+        <!-- Squig Run -->
+        <article class="game">
+          <div class="game-art" style="background-image:url('squig-run/img/squig.png');"></div>
+          <div class="game-body">
+            <h3 class="game-title">Squig Run</h3>
+            <p class="game-desc">Arcade runner. Jump mines, chase the high score, press <b>ESC</b> to pause.</p>
+            <div class="game-actions">
+              <a class="btn play" href="squig-run/index.html">Play</a>
+              <a class="btn more" href="#">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Boneblade -->
+        <article class="game">
+          <div class="game-art" style="background-image:url('boneblade/assets/thumb.png');"></div>
+          <div class="game-body">
+            <h3 class="game-title">Boneblade</h3>
+            <p class="game-desc">Endless 8-bit hack &amp; slash. Survive as long as you can against the undead horde.
+            </p>
+            <div class="game-actions">
+              <a class="btn play" href="boneblade/index.html">Play</a>
+              <a class="btn more" href="#">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="game">
+          <div class="game-art" style="background-image:url('img/placeholder3.png');"></div>
+          <div class="game-body">
+            <h3 class="game-title">Another Project</h3>
+            <p class="game-desc">Tiny puzzle with way too much juice.</p>
+            <div class="game-actions">
+              <a class="btn more" href="#">Details</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom dock actions -->
+  <nav class="dock" aria-label="Quick Links">
+    <a class="primary" href="squig-run/index.html">▶ Play Squig Run</a>
+    <a href="#">All Projects</a>
+    <a href="#">Devlog</a>
+    <a href="#">Roadmap</a>
+    <a href="mailto:you@example.com">Contact</a>
+  </nav>
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boneblade — Colosseum</title>
+
+  <!-- Site-wide styles -->
+  <link rel="stylesheet" href="../style.css" />
+  <!-- Boneblade page styles (make sure this includes overlay + menu styles) -->
+  <link rel="stylesheet" href="boneblade.css" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Dim overlay like your homepage -->
+  <div class="backdrop"></div>
+
+  <main class="container">
+    <section class="panel">
+      <h1 class="title" style="margin:0 0 12px;">BONEBLADE <strong>COLOSSEUM</strong></h1>
+
+      <div class="game-card">
+        <!-- Wrap the screen so overlays align exactly to the canvas -->
+        <div class="screen-wrap" style="position:relative; display:inline-block;">
+          <!-- Retro Main Menu (centered, sits on top of canvas) -->
+          <div id="title-screen" class="overlay">
+            <div class="menu-content">
+              <h1>BONEBLADE <strong>COLOSSEUM</strong></h1>
+              <div class="btn-group">
+                <button id="startBtn" class="btn btn-full btn-accent">Start Game</button>
+                <button id="settingsBtn" class="btn btn-full">Settings</button>
+                <a href="../index.html" class="btn btn-full">Back to Games</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Game canvas -->
+          <canvas id="screen" width="960" height="540" aria-label="Boneblade game canvas"></canvas>
+        </div>
+
+        <!-- Controls row -->
+        <div class="chrome" role="note" aria-label="Controls">
+          <span class="pill">WASD move</span>
+          <span class="pill">Shift dash</span>
+          <span class="pill">Space/Click attack</span>
+          <span class="pill">Esc pause</span>
+        </div>
+
+        <p class="sub">Survive the waves. Dash through danger, slice the horde.</p>
+      </div>
+
+      <p class="sub" style="margin-top:12px;">
+        <a href="../index.html" class="back-link">← Back to WatchMe.Dev Games</a>
+      </p>
+    </section>
+  </main>
+
+  <!-- Game code -->
+  <script src="game.js" defer></script>
+
+  <!-- Tiny glue so Start hides the menu (your game.js can also handle this) -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const startBtn = document.getElementById('startBtn');
+      const title = document.getElementById('title-screen');
+      if (startBtn && title) {
+        startBtn.addEventListener('click', () => {
+          title.style.display = 'none';
+          // If your game.js exposes a start() or similar, call it here:
+           if (typeof start === 'function') start();
+        });
+      }
+      const settingsBtn = document.getElementById('settingsBtn');
+      if (settingsBtn) {
+        settingsBtn.addEventListener('click', () => {
+          // plug in your settings overlay here when you add it
+          alert('Settings coming soon!');
+        });
+      }
+    });
+  </script>
+</body>
+</html>
