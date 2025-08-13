@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Squig Run</title>
+
+  <!-- Your site styles (backdrop, container, panel, buttons, etc.) -->
+  <link rel="stylesheet" href="../style.css" />
+  <!-- Small, game-specific styles -->
+  <link rel="stylesheet" href="squig.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Same dim overlay look as homepage -->
+  <div class="backdrop"></div>
+
+  <main class="container">
+    <section class="panel">
+      <h1 class="title" style="margin:0 0 12px;">SQUIG <strong>RUN</strong></h1>
+
+      <div class="game-card">
+        <!-- Positioning context for canvas + overlays -->
+        <div id="game-wrapper">
+          <!-- Title / Main Menu -->
+          <div id="title-screen" class="overlay">
+            <h1>Squig Run</h1>
+            <div class="btn-group">
+              <button id="startBtn" class="btn btn-accent btn-full">Start Game</button>
+              <button id="settingsBtn" class="btn btn-full">Settings</button>
+              <a href="../index.html" id="backToGames" class="btn btn-full">Back to Games</a>
+            </div>
+          </div>
+
+          <!-- Settings -->
+          <div id="settings-screen" class="overlay" style="display:none;">
+            <div class="settings-menu">
+              <h2>Difficulty</h2>
+              <input type="range" id="difficultySlider" min="1" max="10" value="3" />
+              <div class="settings-row">Speed: <span id="difficultyValue">3</span></div>
+
+              <label class="settings-check">
+                <input type="checkbox" id="reducedMotionToggle" /> Reduced Motion Mode
+              </label>
+              <label class="settings-check">
+                <input type="checkbox" id="muteToggle" /> Mute Sound
+              </label>
+
+              <div class="btn-group">
+                <button id="backBtn" class="btn btn-full">Back</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Death -->
+          <div id="death-screen" class="overlay" style="display:none;">
+            <div class="death-menu">
+              <h2>You Died!</h2>
+              <p id="distance-display">Distance: 0m</p>
+              <div class="btn-group">
+                <button id="retryBtn" class="btn btn-accent btn-full">Retry</button>
+                <a href="#" class="menu-link btn btn-full">Return to Main Menu</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pause -->
+          <div id="pause-screen" class="overlay" style="display:none;">
+            <div class="pause-menu" style="text-align:center; width:300px;">
+              <h2>⏸️ PAUSED</h2>
+              <p>Press <strong>Esc</strong> to resume</p>
+              <div class="btn-group">
+                <button id="resumeBtn"  class="btn btn-accent btn-full">Resume</button>
+                <button id="restartBtn" class="btn btn-full">Restart Run</button>
+                <a href="#" class="menu-link btn btn-full">Main Menu</a>
+              </div>
+              <div id="tip-display" class="tip-text"></div>
+            </div>
+          </div>
+
+          <!-- Canvas + HUD -->
+          <canvas id="gameCanvas" width="800" height="400" aria-label="Squig Run canvas"></canvas>
+          <div id="hud"><span id="hudScore">Score: 0m</span></div>
+        </div>
+
+        <p class="sub">Jump mines. Speed ramps every 1000m. Press <b>Esc</b> to pause.</p>
+      </div>
+
+      <p class="sub" style="margin-top:12px;">
+        <a href="../index.html" class="back-link">← Back to WatchMe.Dev Games</a>
+      </p>
+    </section>
+  </main>
+
+  <script src="game.js" defer></script>
+</body>
+</html>

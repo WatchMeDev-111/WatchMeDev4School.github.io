@@ -1,0 +1,156 @@
+/* Fonts: Press Start for headings, Inter for body */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600&display=swap');
+
+:root{
+  --bg:#0b0c0f;
+  --panel:#14161c;
+  --panel-2:#101318;
+  --text:#e9eef5;
+  --muted:#a7b1c2;
+  --accent:#ff5c33;     /* your orange-red */
+  --border:#2a2f3a;
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+  --radius:16px;
+}
+
+/* Page background – use your own bg image here */
+body{
+  margin:0;
+  color:var(--text);
+  background: var(--bg) url('img/hub_bg.jpg') center/cover fixed no-repeat;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* soft overlay for readability */
+.backdrop{
+  position:fixed; inset:0;
+  background: linear-gradient(180deg, rgba(11,12,15,.85) 0%, rgba(11,12,15,.75) 40%, rgba(11,12,15,.9) 100%);
+  pointer-events:none;
+  z-index:0;
+}
+
+.container{
+  position:relative; z-index:1;
+  max-width:1100px;
+  margin:40px auto 120px;
+  padding:0 20px;
+}
+
+/* ===== profile header ===== */
+.profile{
+  display:grid; grid-template-columns:96px 1fr; gap:20px; align-items:center;
+  background:linear-gradient(180deg, #161a22, #12151b);
+  border:1px solid var(--border); border-radius:var(--radius);
+  box-shadow:var(--shadow); padding:18px;
+}
+.avatar{
+  width:96px; height:96px; border-radius:12px;
+  background:#000 url('img/avatar.png') center/cover no-repeat; /* replace with your avatar */
+  border:1px solid #2c3442;
+}
+.headline{ display:flex; flex-wrap:wrap; align-items:baseline; gap:14px; }
+.title{
+  font-family:'Press Start 2P', monospace;
+  letter-spacing:.5px; font-size:22px; margin:0;
+  text-shadow:0 2px 0 #000;
+}
+.title strong{ color:var(--accent); }
+.badge{
+  font-size:12px; color:#cfe9ff; background:#0e2433;
+  border:1px solid #1b4863; padding:6px 10px; border-radius:10px;
+}
+.meta{ margin-top:8px; color:var(--muted); font-size:14px }
+
+/* ===== showcase strip ===== */
+.showcase{
+  margin-top:16px;
+  background:linear-gradient(135deg, #1a2330, #111820);
+  border:1px solid var(--border); border-radius:var(--radius);
+  box-shadow:var(--shadow); padding:16px;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:12px;
+}
+.show-card{
+  background:#0f141b; border:1px solid #223041; border-radius:12px;
+  min-height:90px; display:flex; align-items:center; justify-content:center;
+  color:#bde0ff; font-weight:600;
+}
+
+/* ===== panel + grid ===== */
+.panel{
+  margin-top:18px; background:var(--panel);
+  border:1px solid var(--border); border-radius:var(--radius);
+  box-shadow:var(--shadow); padding:16px;
+}
+.section-title{
+  margin:0 0 12px; font-size:14px; letter-spacing:.4px;
+  font-weight:600; color:#d9e4f3;
+}
+.grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+
+.game{
+  background:#1a1e26; border:1px solid var(--border);
+  border-radius:14px; box-shadow:var(--shadow);
+  overflow:hidden; display:flex; flex-direction:column;
+  transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.game:hover{ transform:translateY(-3px); border-color:#3b4656; box-shadow:0 12px 36px rgba(0,0,0,.45) }
+
+.game-art{
+  aspect-ratio:16/9;
+  background:#111 center/60% no-repeat;
+  image-rendering:pixelated;
+}
+.game-body{ padding:12px 14px; }
+.game-title{
+  font-family:'Press Start 2P', monospace; font-size:13px; margin:0 0 8px;
+}
+.game-desc{ color:var(--muted); font-size:13px; line-height:1.35; margin:0; }
+.game-actions{ display:flex; gap:10px; margin-top:12px }
+
+.btn{
+  padding:10px 12px; border-radius:10px; border:1px solid #2b3240;
+  background:#0f1218; color:#e9eef5; font-weight:600; text-decoration:none; font-size:13px;
+}
+.btn.play{ border-color:#3b6ff5; background:#16203a }
+.btn.more{ border-color:#3a3f4a }
+.btn:hover{ filter:brightness(1.15) }
+
+/* ===== bottom dock ===== */
+.dock{
+  position:fixed; left:50%; transform:translateX(-50%);
+  bottom:18px; z-index:5;
+  display:flex; gap:10px; flex-wrap:wrap;
+  background:rgba(16,18,24,.85);
+  border:1px solid var(--border); border-radius:14px;
+  padding:10px 14px; box-shadow:var(--shadow);
+  backdrop-filter: blur(6px);
+}
+.dock a{
+  text-decoration:none; color:#fff; font-weight:600; font-size:13px;
+  padding:8px 12px; border-radius:10px; border:1px solid #2a3342; background:#0f141d;
+}
+.dock a:hover{ border-color:#415a7a }
+.dock a.primary{ border-color:var(--accent); background:#1b0f0d; color:#ffd5cb }
+.dock a.primary:hover{ filter:brightness(1.15) }
+
+/* ===== responsive ===== */
+@media (max-width: 980px){
+  .showcase{ grid-template-columns:repeat(2,1fr); }
+  .grid{ grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width: 640px){
+  .profile{ grid-template-columns:64px 1fr; }
+  .avatar{ width:64px; height:64px; }
+  .grid{ grid-template-columns:1fr; }
+  .title{ font-size:18px; }
+}
+
+.avatar {
+  width: 80px; /* Adjust size */
+  height: 80px;
+  background-image: url("img/WatchMeDev_Logo.png");
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px; /* Optional rounded corners */
+}
+

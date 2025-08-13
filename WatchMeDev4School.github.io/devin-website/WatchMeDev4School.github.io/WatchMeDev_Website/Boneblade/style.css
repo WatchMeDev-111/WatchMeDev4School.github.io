@@ -1,0 +1,155 @@
+/* ================================
+   Boneblade — page CSS
+   ================================ */
+
+/* Center the panel in the page */
+main.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* vertical centering */
+}
+
+/* Center content inside panel */
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Title styling */
+.title {
+  font-family: 'Press Start 2P', monospace;
+  letter-spacing: .5px;
+  margin: 0 0 12px;
+}
+.title strong {
+  color: var(--accent);
+}
+
+/* Game card box */
+.game-card {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ===== Canvas ===== */
+#screen {
+  display: block;
+  width: min(960px, 100%);
+  height: auto;
+  margin: 0 auto;
+  background: #0a0f18;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.03);
+}
+
+/* Slightly larger on very big screens */
+@media (min-width: 1400px) {
+  #screen {
+    width: 1080px;
+  }
+}
+
+/* ===== Overlay (Main Menu, etc.) ===== */
+.overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: none; /* hidden by default, JS shows it */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 10;
+}
+
+#title-screen {
+  display: flex; /* show title screen on load */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-family: 'Press Start 2P', monospace;
+}
+
+#title-screen h1 {
+  font-size: 22px;
+  color: #fff;
+  text-shadow: 2px 2px #000;
+  margin: 0;
+}
+
+/* ===== Buttons ===== */
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-full {
+  display: block;
+  width: 220px;
+  text-align: center;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
+  padding: 10px 0;
+}
+
+.btn-accent {
+  border-color: var(--accent);
+  background: #1b0f0d;
+  color: #ffd5cb;
+}
+.btn-accent:hover {
+  filter: brightness(1.15);
+}
+
+/* ===== Controls row ===== */
+.chrome {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10px auto 4px;
+}
+
+.pill {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: var(--text);
+  background: rgba(10,15,24,.6);
+  border: 1px solid rgba(47,70,110,.6);
+  border-radius: 999px;
+  padding: 6px 10px;
+  line-height: 1;
+}
+
+/* ===== Sub text + links ===== */
+.sub {
+  text-align: center;
+  color: var(--muted);
+  margin: 8px 0 0;
+  font-size: 13px;
+}
+.back-link {
+  color: #bde0ff;
+  text-decoration: none;
+  border-bottom: 1px dotted #3b6ff5;
+}
+.back-link:hover {
+  color: #e9eef5;
+  border-color: #bde0ff;
+}

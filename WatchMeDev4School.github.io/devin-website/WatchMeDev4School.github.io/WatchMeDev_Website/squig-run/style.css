@@ -1,0 +1,185 @@
+/* =========================================
+   Squig Run — Page CSS (uses site variables)
+   ========================================= */
+
+/* Panel/card holding the game */
+.game-card{
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Center the panel in the page */
+main.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.panel{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ---- Game area ----
+   Wrapper defines the play area (2:1 for 800x400)
+   and gives overlays a positioning context.
+*/
+#game-wrapper{
+  position: relative;
+  display: block;
+  width: min(800px, 100%);
+  aspect-ratio: 2 / 1;      /* ensures correct height before game starts */
+  margin: 0 auto;           /* horizontal center */
+  line-height: 0;
+}
+
+/* Canvas fills the wrapper (kept visible so wrapper has size) */
+#gameCanvas{
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.03);
+  position: relative;
+  z-index: 0;               /* always below overlays */
+}
+
+/* If you really want the canvas hidden until Start,
+   uncomment below + add document.body.classList.add('playing') in JS */
+/*
+#gameCanvas { visibility: hidden; }
+.playing #gameCanvas { visibility: visible; }
+*/
+
+/* ---- Overlays (Title / Pause / Death / Settings) ---- */
+.overlay{
+  position: absolute;
+  inset: 0;
+  display: none;            /* shown via JS; title screen shown by default below */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: rgba(0,0,0,0.85);
+  z-index: 10;
+  pointer-events: auto;
+}
+
+/* Title screen visible on load; retro vertical layout */
+#title-screen{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-family: 'Press Start 2P', monospace;
+}
+#title-screen h1{
+  font-size: 32px;
+  color: #fff;
+  text-shadow: 2px 2px #000;
+  margin: 0;
+}
+#title-screen .btn-group{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+#title-screen .btn-full{
+  width: 220px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
+  padding: 10px 0;
+}
+
+/* HUD pinned inside the game area (top-right) */
+#hud{
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 4;
+  pointer-events: none;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  color: var(--text);
+  background: rgba(0,0,0,.35);
+  padding: 6px 8px;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  display: none; /* shown after Start */
+}
+
+/* Dialog shells (pause/death) share a look */
+.pause-menu,
+.death-menu{
+  background: #111;
+  border: 2px solid var(--accent);
+  padding: 28px 32px;
+  border-radius: 12px;
+  color: #fff;
+  text-align: center;
+  max-width: 320px;
+  width: min(90%, 320px);
+}
+.death-menu h2{ font-size: 20px; margin-bottom: 16px; }
+.death-menu p  { font-size: 12px; margin: 6px 0 16px; }
+
+/* Settings dialog */
+.settings-menu{
+  text-align: center;
+  background: rgba(30,30,30,0.9);
+  padding: 28px 32px;
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  width: 340px;
+  color: #fff;
+  font-family: 'Press Start 2P', monospace;
+}
+.settings-menu h2{ font-size: 20px; margin-bottom: 18px; }
+.settings-row{ margin: 10px 0 16px; font-size: 12px; }
+.settings-check{
+  display: block; text-align: left;
+  margin: 10px 0; font-size: 11px; color: #fff;
+}
+.settings-check input{ margin-right: 8px; accent-color: var(--accent); }
+.settings-menu input[type="range"]{
+  width: 240px; margin: 8px 0 6px;
+  -webkit-appearance:none; appearance:none; height:6px;
+  background:#333; border:1px solid var(--accent);
+  border-radius:6px; outline:none;
+}
+.settings-menu input[type="range"]::-webkit-slider-thumb,
+.settings-menu input[type="range"]::-moz-range-thumb{
+  width:14px; height:14px; border-radius:50%;
+  background: var(--accent); border:1px solid #000; cursor:pointer;
+}
+
+/* Reuse site buttons; helpers */
+.btn-group{ display:flex; flex-direction:column; gap:10px; align-items:center; }
+.btn-full{ display:block; width:220px; text-align:center; }
+.btn-accent{ border-color: var(--accent); background:#1b0f0d; color:#ffd5cb; }
+.btn-accent:hover{ filter: brightness(1.15); }
+
+/* Footnotes below game */
+.sub{
+  text-align: center;
+  color: var(--muted);
+  margin: 8px 0 0;
+  font-size: 13px;
+}
+.back-link{
+  color:#bde0ff; text-decoration:none; border-bottom:1px dotted #3b6ff5;
+}
+.back-link:hover{ color:#e9eef5; border-color:#bde0ff; }
